@@ -12,7 +12,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "check": "turbo run check",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "lint-staged": {
     "apps/web/src/**/*.{ts,tsx}": ["prettier --write", "eslint --fix"],
