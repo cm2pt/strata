@@ -1,0 +1,9 @@
+bucket,prefix,storage_class,month,size_bytes,cost_usd
+acme-data-lake,raw/crm/,STANDARD,2026-01,4200000000,0.10
+acme-data-lake,raw/crm/,STANDARD,2026-02,4200000000,0.10
+acme-data-lake,archive/customer-events/,GLACIER,2026-01,89000000000,0.36
+acme-data-lake,archive/customer-events/,GLACIER,2026-02,91000000000,0.36
+acme-data-lake,ml/training/,STANDARD,2026-01,156000000000,3.59
+acme-data-lake,ml/training/,STANDARD,2026-02,162000000000,3.73
+acme-data-lake,exports/powerbi/,STANDARD,2026-01,12000000000,0.28
+acme-data-lake,exports/powerbi/,STANDARD,2026-02,12500000000,0.29

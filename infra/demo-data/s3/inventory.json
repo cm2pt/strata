@@ -1,0 +1,62 @@
+[
+  {
+    "external_id": "s3-obj-crm-export-full",
+    "asset_name": "crm-export-full.parquet",
+    "asset_type": "object",
+    "platform": "s3",
+    "qualified_name": "s3://acme-data-lake/raw/crm/crm-export-full.parquet",
+    "display_name": "CRM Export Full",
+    "owner_hint": null,
+    "tags": ["legacy", "crm"],
+    "bucket": "acme-data-lake",
+    "prefix": "raw/crm/",
+    "size_bytes": 4200000000,
+    "last_modified": "2025-07-20T04:00:00+00:00",
+    "storage_class": "STANDARD"
+  },
+  {
+    "external_id": "s3-obj-customer-events-archive",
+    "asset_name": "customer-events-archive/",
+    "asset_type": "prefix",
+    "platform": "s3",
+    "qualified_name": "s3://acme-data-lake/archive/customer-events/",
+    "display_name": "Customer Events Archive",
+    "owner_hint": "data-eng@acme.com",
+    "tags": ["archive", "customer"],
+    "bucket": "acme-data-lake",
+    "prefix": "archive/customer-events/",
+    "size_bytes": 89000000000,
+    "last_modified": "2026-02-22T04:00:00+00:00",
+    "storage_class": "GLACIER"
+  },
+  {
+    "external_id": "s3-obj-ml-training-data",
+    "asset_name": "ml-training-data/",
+    "asset_type": "prefix",
+    "platform": "s3",
+    "qualified_name": "s3://acme-data-lake/ml/training/",
+    "display_name": "ML Training Data",
+    "owner_hint": "ml-team@acme.com",
+    "tags": ["ml", "training"],
+    "bucket": "acme-data-lake",
+    "prefix": "ml/training/",
+    "size_bytes": 156000000000,
+    "last_modified": "2026-02-21T08:00:00+00:00",
+    "storage_class": "STANDARD"
+  },
+  {
+    "external_id": "s3-obj-powerbi-exports",
+    "asset_name": "powerbi-exports/",
+    "asset_type": "prefix",
+    "platform": "s3",
+    "qualified_name": "s3://acme-data-lake/exports/powerbi/",
+    "display_name": "Power BI Exports",
+    "owner_hint": "bi-team@acme.com",
+    "tags": ["exports", "bi"],
+    "bucket": "acme-data-lake",
+    "prefix": "exports/powerbi/",
+    "size_bytes": 12000000000,
+    "last_modified": "2026-02-22T07:00:00+00:00",
+    "storage_class": "STANDARD"
+  }
+]

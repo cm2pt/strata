@@ -1,0 +1,44 @@
+[
+  {
+    "external_id": "pbi-rpt-customer-360",
+    "asset_name": "Customer 360 Overview Report",
+    "asset_type": "report",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/reports/Customer 360 Overview Report",
+    "display_name": "Customer 360 Overview Report",
+    "owner_hint": "sarah.chen@acme.com",
+    "tags": ["certified", "customer"],
+    "dataset_id": "pbi-ds-customer-360",
+    "workspace": "Acme Analytics",
+    "pages": 6,
+    "created_at": "2025-06-15T10:00:00+00:00"
+  },
+  {
+    "external_id": "pbi-rpt-revenue",
+    "asset_name": "Revenue Dashboard Report",
+    "asset_type": "report",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/reports/Revenue Dashboard Report",
+    "display_name": "Revenue Dashboard Report",
+    "owner_hint": "mike.johnson@acme.com",
+    "tags": ["certified", "finance"],
+    "dataset_id": "pbi-ds-revenue-dashboard",
+    "workspace": "Acme Analytics",
+    "pages": 4,
+    "created_at": "2025-03-10T10:00:00+00:00"
+  },
+  {
+    "external_id": "pbi-rpt-marketing",
+    "asset_name": "Marketing Performance Report",
+    "asset_type": "report",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/reports/Marketing Performance Report",
+    "display_name": "Marketing Performance Report",
+    "owner_hint": "marketing@acme.com",
+    "tags": ["marketing"],
+    "dataset_id": "pbi-ds-marketing-perf",
+    "workspace": "Acme Analytics",
+    "pages": 3,
+    "created_at": "2025-09-01T10:00:00+00:00"
+  }
+]

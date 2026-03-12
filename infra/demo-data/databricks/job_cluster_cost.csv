@@ -1,0 +1,7 @@
+cluster_id,cluster_name,month,dbu_hours,cost_usd
+ml-cluster-01,ML Training Cluster,2026-01,1240.5,4962.00
+ml-cluster-01,ML Training Cluster,2026-02,1180.2,4720.80
+ml-cluster-02,Fraud Detection Cluster,2026-01,890.0,3560.00
+ml-cluster-02,Fraud Detection Cluster,2026-02,920.3,3681.20
+analytics-cluster,Analytics Cluster,2026-01,320.0,1280.00
+analytics-cluster,Analytics Cluster,2026-02,340.5,1362.00

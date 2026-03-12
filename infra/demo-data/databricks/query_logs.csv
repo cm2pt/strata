@@ -1,0 +1,13 @@
+query_id,user_email,team,tables_accessed,query_at,bytes_scanned,duration_ms,cluster_id
+q-db-001,ml1@acme.com,ML Engineering,ml_workspace.ml_features.churn_features,2026-01-06T10:00:00+00:00,5600000000,45000,ml-cluster-01
+q-db-002,ml2@acme.com,ML Engineering,ml_workspace.ml_features.fraud_signals,2026-01-08T14:30:00+00:00,28000000000,120000,ml-cluster-02
+q-db-003,ml1@acme.com,ML Engineering,ml_workspace.ml_features.churn_features;ml_workspace.ml_features.customer_segments,2026-01-10T09:15:00+00:00,6800000000,52000,ml-cluster-01
+q-db-004,analyst5@acme.com,Finance,ml_workspace.ml_features.pricing_model_output,2026-01-12T11:00:00+00:00,890000000,8200,analytics-cluster
+q-db-005,ml3@acme.com,ML Engineering,ml_workspace.analytics.experiment_results,2026-01-15T16:00:00+00:00,340000000,3400,ml-cluster-01
+q-db-006,ml1@acme.com,ML Engineering,ml_workspace.ml_features.churn_features;ml_workspace.ml_features.customer_segments,2026-01-20T09:00:00+00:00,6800000000,48000,ml-cluster-01
+q-db-007,ml2@acme.com,ML Engineering,ml_workspace.ml_features.fraud_signals,2026-01-25T10:30:00+00:00,28000000000,115000,ml-cluster-02
+q-db-008,analyst5@acme.com,Finance,ml_workspace.ml_features.pricing_model_output,2026-02-02T14:00:00+00:00,890000000,7800,analytics-cluster
+q-db-009,ml1@acme.com,ML Engineering,ml_workspace.ml_features.churn_features;ml_workspace.ml_features.customer_segments,2026-02-05T09:30:00+00:00,6800000000,50000,ml-cluster-01
+q-db-010,ml3@acme.com,ML Engineering,ml_workspace.analytics.experiment_results,2026-02-10T15:00:00+00:00,340000000,3200,ml-cluster-01
+q-db-011,ml2@acme.com,ML Engineering,ml_workspace.ml_features.fraud_signals,2026-02-15T11:00:00+00:00,28000000000,118000,ml-cluster-02
+q-db-012,ml1@acme.com,ML Engineering,ml_workspace.ml_features.churn_features,2026-02-20T09:45:00+00:00,5600000000,46000,ml-cluster-01

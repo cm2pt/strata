@@ -1,0 +1,4 @@
+name,domain,platform,monthly_cost,declared_value,owner_name,owner_email,description
+"Customer 360","Marketing","snowflake",4200,12000,"Sarah Chen","sarah.chen@company.com","Unified customer profile aggregating CRM, web analytics, and support data"
+"Revenue Analytics","Finance","databricks",3100,9500,"James Park","james.park@company.com","Revenue attribution model with multi-touch analytics"
+"Fraud Detection Model","Risk","bigquery",5600,28000,"Maria Santos","maria.santos@company.com","Real-time fraud scoring using ML ensemble models"

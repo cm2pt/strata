@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Backend Tests ──────────────────────────────────────────────────────────
+  backend:
+    name: Backend Tests (Python)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/api
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -e ".[test]"
+
+      - name: Run tests with coverage
+        env:
+          DATABASE_URL: "sqlite+aiosqlite://"
+          DATABASE_URL_SYNC: "sqlite://"
+          JWT_SECRET: "ci-test-secret"
+          ENCRYPTION_KEY: "ci-test-key-32bytes-long-for-t!"
+          DEMO_MODE: "true"
+          CORS_ORIGINS: "http://localhost:3001"
+        run: |
+          python -m pytest tests/ \
+            --cov=app \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage.xml \
+            --tb=short \
+            -q
+
+      - name: Verify coverage >= 80%
+        env:
+          DATABASE_URL: "sqlite+aiosqlite://"
+          DATABASE_URL_SYNC: "sqlite://"
+          JWT_SECRET: "ci-test-secret"
+          ENCRYPTION_KEY: "ci-test-key-32bytes-long-for-t!"
+          DEMO_MODE: "true"
+          CORS_ORIGINS: "http://localhost:3001"
+        run: |
+          python -m pytest tests/ \
+            --cov=app \
+            --cov-fail-under=80 \
+            -q --no-header
+
+      # ── Security: pip-audit ─────────────────────────────────────────────
+      - name: Audit Python dependencies for vulnerabilities
+        run: |
+          pip install pip-audit
+          pip-audit --strict --desc
+
+  # ── Frontend ────────────────────────────────────────────────────────────────
+  frontend:
+    name: Frontend (Node)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ── Security: npm audit ──────────────────────────────────────────────
+      - name: Audit dependencies for high/critical vulnerabilities
+        run: npm audit --audit-level=high
+
+      # ── TypeScript typecheck ─────────────────────────────────────────────
+      - name: TypeScript typecheck
+        run: npx tsc --noEmit
+
+      # ── ESLint ───────────────────────────────────────────────────────────
+      - name: Lint (ESLint)
+        run: npx eslint .
+
+      # ── Vitest with coverage ─────────────────────────────────────────────
+      - name: Run tests with coverage
+        run: npx vitest run --coverage
+
+      - name: Verify coverage >= 80%
+        run: |
+          # vitest.config.ts already enforces thresholds.lines: 80
+          echo "Coverage threshold enforced by vitest config"

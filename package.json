@@ -1,0 +1,26 @@
+{
+  "name": "strata",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@11.11.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "check": "turbo run check",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "apps/web/src/**/*.{ts,tsx}": ["prettier --write", "eslint --fix"],
+    "apps/api/**/*.py": ["ruff format", "ruff check --fix"]
+  },
+  "devDependencies": {
+    "husky": "9.1.7",
+    "lint-staged": "16.2.7",
+    "turbo": "^2"
+  }
+}

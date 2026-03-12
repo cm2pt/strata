@@ -1,0 +1,69 @@
+[
+  {
+    "external_id": "pbi-ds-customer-360",
+    "asset_name": "Customer 360 Overview",
+    "asset_type": "dataset",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/Customer 360 Overview",
+    "display_name": "Customer 360 Overview",
+    "owner_hint": "sarah.chen@acme.com",
+    "tags": ["certified", "customer", "gold"],
+    "workspace": "Acme Analytics",
+    "tables": [
+      "PROD_WAREHOUSE.ANALYTICS.CUSTOMER_360_SUMMARY",
+      "PROD_WAREHOUSE.ANALYTICS.USER_PROFILES",
+      "PROD_WAREHOUSE.ANALYTICS.CUSTOMER_EVENTS"
+    ],
+    "refresh_schedule": "daily",
+    "last_refresh": "2026-02-22T06:00:00+00:00"
+  },
+  {
+    "external_id": "pbi-ds-revenue-dashboard",
+    "asset_name": "Revenue Dashboard",
+    "asset_type": "dataset",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/Revenue Dashboard",
+    "display_name": "Revenue Dashboard",
+    "owner_hint": "mike.johnson@acme.com",
+    "tags": ["certified", "finance"],
+    "workspace": "Acme Analytics",
+    "tables": [
+      "PROD_WAREHOUSE.ANALYTICS.REVENUE_DAILY",
+      "PROD_WAREHOUSE.RAW.TRANSACTIONS"
+    ],
+    "refresh_schedule": "daily",
+    "last_refresh": "2026-02-22T06:00:00+00:00"
+  },
+  {
+    "external_id": "pbi-ds-marketing-perf",
+    "asset_name": "Marketing Performance",
+    "asset_type": "dataset",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/Marketing Performance",
+    "display_name": "Marketing Performance",
+    "owner_hint": "marketing@acme.com",
+    "tags": ["marketing"],
+    "workspace": "Acme Analytics",
+    "tables": [
+      "PROD_WAREHOUSE.STAGING.MARKETING_CAMPAIGNS"
+    ],
+    "refresh_schedule": "weekly",
+    "last_refresh": "2026-02-20T06:00:00+00:00"
+  },
+  {
+    "external_id": "pbi-ds-legacy-crm",
+    "asset_name": "Legacy CRM Report",
+    "asset_type": "dataset",
+    "platform": "powerbi",
+    "qualified_name": "powerbi://acme-workspace/Legacy CRM Report",
+    "display_name": "Legacy CRM Report",
+    "owner_hint": null,
+    "tags": ["legacy"],
+    "workspace": "Acme Analytics",
+    "tables": [
+      "PROD_WAREHOUSE.STAGING.LEGACY_CRM_EXTRACT"
+    ],
+    "refresh_schedule": "none",
+    "last_refresh": "2025-08-10T06:00:00+00:00"
+  }
+]

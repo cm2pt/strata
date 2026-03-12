@@ -1,0 +1,31 @@
+from fastapi import APIRouter
+
+from app.api.v1 import auth, portfolio, assets, lifecycle, decisions, connectors, allocation, benchmarks, simulate, marketplace, capital_impact, pricing, ai_scorecard, notifications, candidates, capital_efficiency, enforcement, board, org_info, display_config, capital_behavior, capital_projection, health, connector_depth, lineage
+
+api_router = APIRouter()
+
+api_router.include_router(auth.router, prefix="/auth", tags=["auth"])
+api_router.include_router(portfolio.router, prefix="/portfolio", tags=["portfolio"])
+api_router.include_router(assets.router, prefix="/assets", tags=["assets"])
+api_router.include_router(lifecycle.router, prefix="/lifecycle", tags=["lifecycle"])
+api_router.include_router(decisions.router, prefix="/decisions", tags=["decisions"])
+api_router.include_router(connectors.router, prefix="/connectors", tags=["connectors"])
+api_router.include_router(allocation.router, prefix="/allocation", tags=["allocation"])
+api_router.include_router(benchmarks.router, prefix="/benchmarks", tags=["benchmarks"])
+api_router.include_router(simulate.router, prefix="/simulate", tags=["simulate"])
+api_router.include_router(marketplace.router, prefix="/marketplace", tags=["marketplace"])
+api_router.include_router(capital_impact.router, prefix="/capital-impact", tags=["capital-impact"])
+api_router.include_router(pricing.router, prefix="/pricing", tags=["pricing"])
+api_router.include_router(ai_scorecard.router, prefix="/ai-scorecard", tags=["ai-scorecard"])
+api_router.include_router(notifications.router, prefix="/notifications", tags=["notifications"])
+api_router.include_router(candidates.router, prefix="/candidates", tags=["candidates"])
+api_router.include_router(capital_efficiency.router, prefix="/capital-efficiency", tags=["capital-efficiency"])
+api_router.include_router(enforcement.router, prefix="/enforcement", tags=["enforcement"])
+api_router.include_router(board.router, prefix="/board", tags=["board"])
+api_router.include_router(org_info.router, prefix="/org-info", tags=["org-info"])
+api_router.include_router(display_config.router, prefix="/display-config", tags=["display-config"])
+api_router.include_router(capital_behavior.router, prefix="/capital-behavior", tags=["capital-behavior"])
+api_router.include_router(capital_projection.router, prefix="/capital-projection", tags=["capital-projection"])
+api_router.include_router(connector_depth.router, prefix="/connector-depth", tags=["connector-depth"])
+api_router.include_router(lineage.router, prefix="/lineage", tags=["lineage"])
+api_router.include_router(health.router, tags=["health"])

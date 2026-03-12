@@ -1,0 +1,9 @@
+export { BoardViewHeader } from "./BoardViewHeader";
+export { ExecutiveSummarySection } from "./ExecutiveSummarySection";
+export { PortfolioSummarySection } from "./PortfolioSummarySection";
+export { ROITrendSection } from "./ROITrendSection";
+export { RiskExposureSection } from "./RiskExposureSection";
+export { RetirementSavingsSection } from "./RetirementSavingsSection";
+export { CapitalAllocationTable } from "./CapitalAllocationTable";
+export { CapitalImpactSection } from "./CapitalImpactSection";
+export { MethodologyAppendix } from "./MethodologyAppendix";

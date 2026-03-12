@@ -1,0 +1,370 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-instrument-sans);
+  --font-serif: var(--font-instrument-serif);
+  --font-mono: var(--font-mono);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.975 0.003 250);
+  --foreground: oklch(0.20 0.01 250);
+  --card: oklch(0.995 0.002 80);
+  --card-foreground: oklch(0.20 0.01 250);
+  --popover: oklch(0.995 0.002 80);
+  --popover-foreground: oklch(0.20 0.01 250);
+  --primary: oklch(0.15 0.02 250);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.30 0.10 25);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.14 0.01 250);
+  --foreground: oklch(0.985 0.005 250);
+  --card: oklch(0.19 0.012 250);
+  --card-foreground: oklch(0.985 0.005 250);
+  --popover: oklch(0.19 0.012 250);
+  --popover-foreground: oklch(0.985 0.005 250);
+  --primary: oklch(0.922 0.005 250);
+  --primary-foreground: oklch(0.19 0.012 250);
+  --secondary: oklch(0.25 0.01 250);
+  --secondary-foreground: oklch(0.985 0.005 250);
+  --muted: oklch(0.25 0.01 250);
+  --muted-foreground: oklch(0.708 0.005 250);
+  --accent: oklch(0.25 0.01 250);
+  --accent-foreground: oklch(0.985 0.005 250);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.17 0.012 250);
+  --sidebar-foreground: oklch(0.985 0.005 250);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0.005 250);
+  --sidebar-accent: oklch(0.23 0.01 250);
+  --sidebar-accent-foreground: oklch(0.985 0.005 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Focus indicators for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── Marketing animation utilities ──────────────────────────── */
+
+/* Fade-in-up for scroll reveal */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children (apply stagger-children to parent of .fade-in-up items) */
+.stagger-children > .fade-in-up:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > .fade-in-up:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > .fade-in-up:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > .fade-in-up:nth-child(4) { transition-delay: 300ms; }
+
+/* Hero animated gradient — subtle 20s atmospheric cycle */
+@keyframes hero-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #0B1220 0%,
+    #0D1628 25%,
+    #0B1220 50%,
+    #0A1018 75%,
+    #0B1220 100%
+  );
+  background-size: 400% 400%;
+  animation: hero-gradient 20s ease-in-out infinite;
+}
+
+/* Noise/grain texture overlay at 2% opacity */
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* CTA arrow hover animation */
+.cta-arrow .arrow-icon {
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cta-arrow:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+/* Chart SVG line-draw animation */
+@keyframes line-draw {
+  from { stroke-dashoffset: var(--line-length, 1000); }
+  to { stroke-dashoffset: 0; }
+}
+.animate-line-draw {
+  stroke-dasharray: var(--line-length, 1000);
+  stroke-dashoffset: var(--line-length, 1000);
+  animation: line-draw 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Card accent top border — gradient teal-to-transparent */
+.card-border-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-border-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #0F766E 0%,
+    #0F766E40 50%,
+    transparent 100%
+  );
+}
+
+/* Accent glow for primary CTAs — "light escaping from behind" */
+.accent-glow {
+  box-shadow: 0 0 20px rgba(15, 118, 110, 0.15),
+              0 0 40px rgba(15, 118, 110, 0.05);
+}
+.accent-glow:hover {
+  box-shadow: 0 0 24px rgba(15, 118, 110, 0.2),
+              0 0 48px rgba(15, 118, 110, 0.08);
+}
+
+/* Shimmer loading effect — replaces generic pulse */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 25%,
+    rgba(0, 0, 0, 0.08) 50%,
+    rgba(0, 0, 0, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* Button micro-interaction */
+.btn-interactive {
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.btn-interactive:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Card hover elevation */
+.card-elevate {
+  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-elevate:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Count-up entrance for metrics */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-count-up {
+  animation: count-up 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Section divider — subtle ledger line */
+.ledger-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.06) 20%,
+    rgba(0, 0, 0, 0.06) 80%,
+    transparent 100%
+  );
+}
+.ledger-divider-dark {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 20%,
+    rgba(255, 255, 255, 0.06) 80%,
+    transparent 100%
+  );
+}
+
+/* Metric highlight — left accent stripe */
+.metric-stripe {
+  border-left: 2px solid #0F766E;
+}
+
+/* Focus ring for institutional inputs */
+.input-institutional {
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.input-institutional:focus {
+  border-color: #0B1220;
+  box-shadow: 0 0 0 3px rgba(11, 18, 32, 0.08);
+  outline: none;
+}
+
+/* Board-ready print styles */
+@media print {
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide sidebar and navigation in print */
+  aside,
+  nav,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  /* Remove shadows in print */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Page break control */
+  section {
+    break-inside: avoid;
+  }
+
+  /* Section headings should not be orphaned at page bottom */
+  h2, h3 {
+    break-after: avoid;
+  }
+
+  /* Utility: force a page break before this element */
+  .break-before-page {
+    break-before: page;
+  }
+
+  /* Optimize layout for A4 landscape */
+  @page {
+    size: landscape;
+    margin: 1cm;
+
+    @bottom-right {
+      content: counter(page);
+      font-size: 9px;
+      color: #9ca3af;
+    }
+  }
+}

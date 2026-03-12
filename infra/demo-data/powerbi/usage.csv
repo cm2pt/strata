@@ -1,0 +1,25 @@
+report_id,user_email,team,view_at,duration_seconds
+pbi-rpt-customer-360,analyst1@acme.com,Data Analytics,2026-01-06T09:30:00+00:00,320
+pbi-rpt-customer-360,analyst4@acme.com,Customer Success,2026-01-07T14:15:00+00:00,540
+pbi-rpt-customer-360,exec1@acme.com,Executive,2026-01-08T10:00:00+00:00,180
+pbi-rpt-revenue,analyst5@acme.com,Finance,2026-01-09T11:00:00+00:00,420
+pbi-rpt-customer-360,analyst2@acme.com,Data Analytics,2026-01-10T09:45:00+00:00,290
+pbi-rpt-marketing,analyst3@acme.com,Marketing,2026-01-12T13:30:00+00:00,180
+pbi-rpt-customer-360,analyst4@acme.com,Customer Success,2026-01-14T10:20:00+00:00,610
+pbi-rpt-revenue,exec2@acme.com,Executive,2026-01-15T15:00:00+00:00,240
+pbi-rpt-customer-360,analyst1@acme.com,Data Analytics,2026-01-18T09:00:00+00:00,350
+pbi-rpt-customer-360,exec1@acme.com,Executive,2026-01-20T11:30:00+00:00,200
+pbi-rpt-revenue,analyst5@acme.com,Finance,2026-01-22T14:00:00+00:00,380
+pbi-rpt-customer-360,analyst4@acme.com,Customer Success,2026-01-25T10:00:00+00:00,480
+pbi-rpt-customer-360,analyst2@acme.com,Data Analytics,2026-01-28T09:30:00+00:00,310
+pbi-rpt-marketing,analyst3@acme.com,Marketing,2026-01-30T13:00:00+00:00,150
+pbi-rpt-customer-360,analyst1@acme.com,Data Analytics,2026-02-01T09:15:00+00:00,340
+pbi-rpt-revenue,exec1@acme.com,Executive,2026-02-03T16:00:00+00:00,190
+pbi-rpt-customer-360,analyst4@acme.com,Customer Success,2026-02-05T10:30:00+00:00,520
+pbi-rpt-customer-360,exec2@acme.com,Executive,2026-02-08T11:00:00+00:00,210
+pbi-rpt-revenue,analyst5@acme.com,Finance,2026-02-10T14:30:00+00:00,400
+pbi-rpt-customer-360,analyst2@acme.com,Data Analytics,2026-02-12T09:00:00+00:00,280
+pbi-rpt-customer-360,analyst4@acme.com,Customer Success,2026-02-15T10:15:00+00:00,490
+pbi-rpt-customer-360,analyst1@acme.com,Data Analytics,2026-02-18T09:45:00+00:00,360
+pbi-rpt-customer-360,exec1@acme.com,Executive,2026-02-20T10:30:00+00:00,220
+pbi-rpt-customer-360,analyst4@acme.com,Customer Success,2026-02-22T10:00:00+00:00,510

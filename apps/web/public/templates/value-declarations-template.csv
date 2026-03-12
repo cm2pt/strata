@@ -1,0 +1,4 @@
+product_name,declared_value_monthly,value_basis,declared_by,declaration_date,expires_date
+"Customer 360",12000,"Revenue attribution: $12K/mo in campaign lift measured via A/B holdout","Sarah Chen","2024-01-15","2024-07-15"
+"Revenue Analytics",9500,"Cost avoidance: replaces $9.5K/mo in manual reporting labor","James Park","2024-02-01","2024-08-01"
+"Fraud Detection Model",28000,"Loss prevention: $28K/mo in prevented fraudulent transactions","Maria Santos","2024-03-10","2024-09-10"

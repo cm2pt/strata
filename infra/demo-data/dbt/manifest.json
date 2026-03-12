@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "project_name": "acme_analytics",
+    "generated_at": "2026-02-22T22:00:00+00:00",
+    "dbt_version": "1.8.0"
+  },
+  "nodes": {
+    "model.acme_analytics.stg_customer_events": {
+      "unique_id": "model.acme_analytics.stg_customer_events",
+      "name": "stg_customer_events",
+      "resource_type": "model",
+      "schema": "analytics",
+      "database": "prod_warehouse",
+      "fqn": ["acme_analytics", "staging", "stg_customer_events"],
+      "description": "Staged customer events from raw source",
+      "depends_on": {
+        "nodes": []
+      },
+      "tags": ["staging", "customer"],
+      "meta": {
+        "owner": "data-eng@acme.com"
+      },
+      "relation_name": "PROD_WAREHOUSE.ANALYTICS.CUSTOMER_EVENTS"
+    },
+    "model.acme_analytics.stg_transactions": {
+      "unique_id": "model.acme_analytics.stg_transactions",
+      "name": "stg_transactions",
+      "resource_type": "model",
+      "schema": "raw",
+      "database": "prod_warehouse",
+      "fqn": ["acme_analytics", "staging", "stg_transactions"],
+      "description": "Staged transaction records",
+      "depends_on": {
+        "nodes": []
+      },
+      "tags": ["staging", "finance"],
+      "meta": {
+        "owner": "data-eng@acme.com"
+      },
+      "relation_name": "PROD_WAREHOUSE.RAW.TRANSACTIONS"
+    },
+    "model.acme_analytics.stg_user_profiles": {
+      "unique_id": "model.acme_analytics.stg_user_profiles",
+      "name": "stg_user_profiles",
+      "resource_type": "model",
+      "schema": "analytics",
+      "database": "prod_warehouse",
+      "fqn": ["acme_analytics", "staging", "stg_user_profiles"],
+      "description": "Staged user profile data",
+      "depends_on": {
+        "nodes": []
+      },
+      "tags": ["staging", "customer"],
+      "meta": {
+        "owner": "data-eng@acme.com"
+      },
+      "relation_name": "PROD_WAREHOUSE.ANALYTICS.USER_PROFILES"
+    },
+    "model.acme_analytics.int_customer_360": {
+      "unique_id": "model.acme_analytics.int_customer_360",
+      "name": "int_customer_360",
+      "resource_type": "model",
+      "schema": "analytics",
+      "database": "prod_warehouse",
+      "fqn": ["acme_analytics", "intermediate", "int_customer_360"],
+      "description": "Intermediate customer 360 model joining events, profiles, and transactions",
+      "depends_on": {
+        "nodes": [
+          "model.acme_analytics.stg_customer_events",
+          "model.acme_analytics.stg_user_profiles",
+          "model.acme_analytics.stg_transactions"
+        ]
+      },
+      "tags": ["intermediate", "customer"],
+      "meta": {
+        "owner": "data-eng@acme.com"
+      },
+      "relation_name": "PROD_WAREHOUSE.ANALYTICS.CUSTOMER_360_SUMMARY"
+    },
+    "model.acme_analytics.fct_revenue": {
+      "unique_id": "model.acme_analytics.fct_revenue",
+      "name": "fct_revenue",
+      "resource_type": "model",
+      "schema": "analytics",
+      "database": "prod_warehouse",
+      "fqn": ["acme_analytics", "marts", "fct_revenue"],
+      "description": "Revenue fact table aggregated daily",
+      "depends_on": {
+        "nodes": [
+          "model.acme_analytics.stg_transactions"
+        ]
+      },
+      "tags": ["marts", "finance"],
+      "meta": {
+        "owner": "finance@acme.com"
+      },
+      "relation_name": "PROD_WAREHOUSE.ANALYTICS.REVENUE_DAILY"
+    }
+  },
+  "exposures": {
+    "exposure.acme_analytics.customer_360": {
+      "unique_id": "exposure.acme_analytics.customer_360",
+      "name": "customer_360",
+      "resource_type": "exposure",
+      "type": "dashboard",
+      "description": "Customer 360 — unified view of customer behavior, transactions, and profile attributes. Primary consumption layer for Customer Success and Marketing teams.",
+      "owner": {
+        "name": "Sarah Chen",
+        "email": "data-eng@acme.com"
+      },
+      "depends_on": {
+        "nodes": [
+          "model.acme_analytics.int_customer_360",
+          "model.acme_analytics.stg_customer_events",
+          "model.acme_analytics.stg_user_profiles"
+        ]
+      },
+      "tags": ["customer", "certified", "gold"],
+      "meta": {
+        "maturity": "high",
+        "sla": "daily"
+      },
+      "url": "https://app.powerbi.com/groups/acme/reports/customer-360-overview"
+    },
+    "exposure.acme_analytics.revenue_reporting": {
+      "unique_id": "exposure.acme_analytics.revenue_reporting",
+      "name": "revenue_reporting",
+      "resource_type": "exposure",
+      "type": "dashboard",
+      "description": "Revenue reporting dashboard consumed by Finance and Executive teams",
+      "owner": {
+        "name": "Mike Johnson",
+        "email": "finance@acme.com"
+      },
+      "depends_on": {
+        "nodes": [
+          "model.acme_analytics.fct_revenue"
+        ]
+      },
+      "tags": ["finance", "certified"],
+      "meta": {
+        "maturity": "high",
+        "sla": "daily"
+      }
+    }
+  }
+}
