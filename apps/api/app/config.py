@@ -8,7 +8,9 @@ _DEFAULT_JWT_SECRET = "dev-secret-change-in-production"
 
 class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://strata:localdev@localhost:5432/strata"
-    database_url_sync: str = "postgresql+psycopg2://strata:localdev@localhost:5432/strata"
+    database_url_sync: str = (
+        "postgresql+psycopg2://strata:localdev@localhost:5432/strata"
+    )
     jwt_secret: str = _DEFAULT_JWT_SECRET
     jwt_algorithm: str = "HS256"
     jwt_expire_hours: int = 24
@@ -24,6 +26,10 @@ class Settings(BaseSettings):
     # Rate limiting: max login attempts per minute per IP
     login_rate_limit: str = "5/minute"
 
+    # Serverless mode: disables startup seeding, reduces connection pool,
+    # and relaxes in-memory rate limiting (no shared state across invocations).
+    serverless: bool = False
+
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
 
@@ -35,7 +41,9 @@ settings = Settings()
 if settings.demo_data_path == "/demo-data" and not Path("/demo-data").exists():
     # Try common local paths relative to the project structure
     _candidates = [
-        Path(__file__).resolve().parent.parent.parent.parent / "infra" / "demo-data",  # apps/api/app/config.py → project root
+        Path(__file__).resolve().parent.parent.parent.parent
+        / "infra"
+        / "demo-data",  # apps/api/app/config.py → project root
         Path.cwd() / "infra" / "demo-data",
         Path.cwd().parent.parent / "infra" / "demo-data",  # from apps/api/
     ]

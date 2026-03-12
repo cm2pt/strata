@@ -21,8 +21,9 @@ logger = logging.getLogger("strata.api")
 async def lifespan(app: FastAPI):
     """Startup: configure structured logging, run seeder if DEMO_MODE and DB is empty. Shutdown: dispose engine."""
     setup_logging()
-    if settings.demo_mode:
+    if settings.demo_mode and not settings.serverless:
         from app.seed.multinational_seeder import seed_multinational
+
         await seed_multinational()
     yield
     await engine.dispose()
@@ -46,7 +47,13 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type", "X-Request-ID", "X-CSRF-Token", "X-Idempotency-Key"],
+    allow_headers=[
+        "Authorization",
+        "Content-Type",
+        "X-Request-ID",
+        "X-CSRF-Token",
+        "X-Idempotency-Key",
+    ],
 )
 
 # GZip response compression for responses >= 500 bytes
@@ -54,6 +61,7 @@ app.add_middleware(GZipMiddleware, minimum_size=500)
 
 # Deprecation / Sunset headers for deprecated endpoints
 from app.middleware.deprecation import DeprecationHeadersMiddleware  # noqa: E402
+
 app.add_middleware(DeprecationHeadersMiddleware)
 
 
@@ -105,7 +113,7 @@ async def limit_request_size(request, call_next):
         if content_length > 1_048_576:  # 1MB
             return JSONResponse(
                 status_code=413,
-                content={"detail": "Request body too large. Maximum size is 1MB."}
+                content={"detail": "Request body too large. Maximum size is 1MB."},
             )
     return await call_next(request)
 
@@ -124,7 +132,7 @@ async def log_request_timing(request, call_next):
             "status": response.status_code,
             "duration_ms": round(duration_ms, 2),
             "request_id": request.headers.get("x-request-id", ""),
-        }
+        },
     )
     # Add timing header for client debugging
     response.headers["X-Response-Time"] = f"{duration_ms:.0f}ms"
@@ -133,8 +141,10 @@ async def log_request_timing(request, call_next):
 
 # Mount API v1 router (includes /api/v1/health)
 from app.api.v1.router import api_router  # noqa: E402
+
 app.include_router(api_router, prefix="/api/v1")
 
 # Backwards-compatible root health check — delegates to the v1 endpoint
 from app.api.v1.health import health_check  # noqa: E402
+
 app.get("/health", tags=["health"])(health_check)
