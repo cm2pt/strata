@@ -1,7 +1,36 @@
+import re
 import warnings
 from pathlib import Path
 
 from pydantic_settings import BaseSettings
+
+
+def _adapt_neon_url(url: str, driver: str = "asyncpg") -> str:
+    """Transform a Neon/Vercel-provided PostgreSQL URL for SQLAlchemy drivers.
+
+    Vercel's Neon integration provides ``postgresql://…`` URLs with parameters
+    that are incompatible with asyncpg (``channel_binding``, ``sslmode``).
+    This helper rewrites the URL so it works with the requested driver.
+    """
+    if not url or "neon.tech" not in url:
+        return url
+    # Replace driver prefix
+    url = re.sub(r"^postgresql(\+\w+)?://", f"postgresql+{driver}://", url)
+    # Remove channel_binding (not supported by asyncpg)
+    url = re.sub(r"[?&]channel_binding=[^&]*", "", url)
+    # If removal left & as first query-string char, replace with ?
+    url = re.sub(r"\?&", "?", url)
+    url = re.sub(r"([^?])&", r"\1?", url) if "?" not in url.split("@")[-1] else url
+    # Ensure remaining params start with ?
+    parts = url.split("@", 1)
+    if len(parts) == 2 and "?" not in parts[1] and "&" in parts[1]:
+        parts[1] = parts[1].replace("&", "?", 1)
+        url = "@".join(parts)
+    if driver == "asyncpg":
+        # asyncpg uses ``ssl`` not ``sslmode``
+        url = url.replace("sslmode=require", "ssl=require")
+    return url
+
 
 _DEFAULT_JWT_SECRET = "dev-secret-change-in-production"
 
@@ -34,6 +63,14 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+# ---------------------------------------------------------------------------
+# Adapt Neon URLs for SQLAlchemy drivers (Vercel injects plain postgresql://)
+# ---------------------------------------------------------------------------
+settings.database_url = _adapt_neon_url(settings.database_url, driver="asyncpg")
+settings.database_url_sync = _adapt_neon_url(
+    settings.database_url_sync, driver="psycopg2"
+)
 
 # ---------------------------------------------------------------------------
 # Auto-resolve demo_data_path for local development
